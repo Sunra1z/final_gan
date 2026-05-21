@@ -1,84 +1,65 @@
 # final_gan
-Neural Entropy Conditioned Cryptographic GAN
+## 1. Название проекта
 
-A neural adversarial cryptographic system that generates secure bitstreams using sensor-based entropy and GAN-style training (Alice–Bob–Eve architecture).
-
-##  Overview
-
-This project implements a neural cryptographic framework inspired by adversarial learning. The system learns to:
-
-- Encrypt messages using a learned generator (Alice)
-- Decrypt messages using a cooperative model (Bob)
-- Resist adversarial attacks (Eve)
-- Enhance randomness using real-world sensor data (UCI HAR dataset)
-
-The final output is a **pseudo-random bitstream** suitable for statistical randomness testing (e.g., NIST SP 800-22).
+**Neural Entropy-Conditioned Cryptographic GAN (K-GAN) for Sensor-Based Secure Bitstream Generation**
 
 ---
 
-## 🧠 Architecture
+## 2. Цель проекта
 
-### 🔹 Alice (Generator / Encryptor)
-- Input: `Message bits + Key + Sensor features`
-- Output: `24-bit ciphertext`
-- Layers:
+Цель проекта — разработка нейросетевой криптографической системы, которая:
+
+- генерирует криптографически устойчивый битовый поток
+- использует сенсорные данные как источник энтропии
+- реализует защищённое шифрование на основе adversarial learning
+- исследует применимость GAN-подхода в криптографии
+
+Проект направлен на создание альтернативного подхода к генерации случайности для криптографических систем в IoT и мобильных устройствах.
+
+---
+
+## 3. Описание архитектуры GAN
+
+Модель построена на принципе **Adversarial Neural Cryptography** и состоит из трёх компонентов:
+
+###  Alice (Generator / Encryptor)
+- Вход: сообщение (P), ключ (K), сенсорные данные (S)
+- Архитектура:
   - Linear → ReLU → Dropout → Linear → Tanh
+- Выход: 24-битный шифротекст
 
 ---
 
-### 🔹 Bob (Decryptor)
-- Input: `Ciphertext + Key + Sensor features`
-- Output: reconstructed message bits
-- Same architecture as Alice
+###  Bob (Decryptor)
+- Вход: шифротекст (C), ключ (K), сенсорные данные (S)
+- Архитектура аналогична Alice
+- Задача: восстановить исходное сообщение P
 
 ---
 
-### 🔹 Eve (Adversary)
-- Input: `Ciphertext only`
-- Goal: reconstruct original message without key
-- Used to enforce cryptographic robustness
+###  Eve (Adversary)
+- Вход: только шифротекст C
+- Архитектура:
+  - Linear → ReLU → Dropout → Linear → Tanh
+- Задача: взломать сообщение без ключа
 
 ---
 
-## ⚙️ Training Objective
+## 4. Используемый датасет
 
-Adversarial training follows:
+###  UCI Human Activity Recognition (HAR)
 
-Bob minimizes reconstruction loss
----
-
-Eve minimizes attack loss
----
-
-Alice minimizes combined adversarial loss
----
-
-## 📊 Dataset
-
-### UCI Human Activity Recognition (HAR)
-
-- 561 sensor features
-- Normalized range: [-1, 1]
-- Source: smartphone accelerometer & gyroscope signals
-
-Used as a **physical entropy source** to improve randomness quality.
+- 561 признаков сенсорных данных
+- Диапазон значений: [-1, 1]
+- Источник: акселерометр и гироскоп смартфона
+- Используется как источник физической энтропии
 
 ---
 
-## 🔐 Key Features
+## 5. Инструкция по запуску
 
-- Adversarial neural cryptography (Alice–Bob–Eve)
-- Sensor-based entropy injection
-- Residual noise augmentation
-- XOR-based stochastic bit refinement
-- Neural pseudo-random bit generator (PRNG)
+###  Установка зависимостей и запуск проекта
 
----
-
-## 📈 Outputs
-
-The system generates:
-
-- Encrypted bitstreams (24 bits per symbol)
-- Large-scale binary sequences (up to millions of bits)
-- Statistical randomness data for NIST testing
+```bash
+pip install torch numpy matplotlib seaborn
+python gan4key_updated.py
