@@ -61,7 +61,7 @@
 ###  Установка зависимостей и запуск проекта
 
 ```bash
-pip install torch numpy matplotlib seaborn
+pip install requirements.txt
 python gan4key_updated.py
 ```
 ## 6. Параметры обучения
