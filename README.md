@@ -66,18 +66,18 @@ python gan4key_updated.py
 ```
 ## 6. Параметры обучения
 
-Оптимизатор: Adam
-Learning rate: 0.0008
-Batch size: 128
-Epochs: 20–50
-Loss function: Mean Squared Error (MSE)
+- Оптимизатор: Adam
+- Learning rate: 0.0008
+- Batch size: 128
+- Epochs: 20–50
+- Loss function: Mean Squared Error (MSE)
 
 Гиперпараметры модели:
-MSG_LEN = 24
-KEY_LEN = 24
-SENSOR_DIM = 561
-Dropout = 0.3
-Activation: Tanh
+- MSG_LEN = 24
+- KEY_LEN = 24
+- SENSOR_DIM = 561
+- Dropout = 0.3
+- Activation: Tanh
 
 
 ## Дополнительно
