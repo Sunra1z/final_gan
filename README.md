@@ -62,7 +62,7 @@
 
 ```bash
 pip install requirements.txt
-python gan4key_updated.py
+python gan4key.py
 ```
 ## 6. Параметры обучения
 
