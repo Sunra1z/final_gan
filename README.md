@@ -44,21 +44,27 @@ The final output is a **pseudo-random bitstream** suitable for statistical rando
 
 Adversarial training follows:
 
-- Bob minimizes reconstruction loss:
+Bob minimizes reconstruction loss:
+
 \[
-L_B = MSE(P_{bob}, P)
+L_B = \mathrm{MSE}(P_{bob}, P)
 \]
 
-- Eve minimizes attack loss:
+---
+
+Eve minimizes attack loss:
+
 \[
-L_E = MSE(P_{eve}, P)
+L_E = \mathrm{MSE}(P_{eve}, P)
 \]
 
-- Alice minimizes:
+---
+
+Alice minimizes combined adversarial loss:
+
 \[
 L_{AB} = L_B + (1 - L_E)^2
 \]
-
 ---
 
 ## 📊 Dataset
